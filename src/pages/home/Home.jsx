@@ -9,13 +9,13 @@ const Home = () => {
   return (
     <div className="home">
       {/* <Login/> */}
-      <Register/>
-      {/* <Navbar /> */}
-      {/* <Featured/> */}
-      {/* <List/> */}
-      {/* <List/> */}
-      {/* <List/> */}
-      {/* <List/> */}
+      {/* <Register/> */}
+      <Navbar />
+      <Featured/>
+      <List/>
+      <List/>
+      <List/>
+      <List/>
     </div>
   );
 };
