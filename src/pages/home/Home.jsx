@@ -4,18 +4,37 @@ import "./home.scss";
 import List from "../../components/list/List";
 import Login from "../login/Login";
 import Register from "../register/Register";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const Home = () => {
+const Home = ({type}) => {
+  const [lists,setLists]=useState([])
+  const [genre,setGenre]=useState(null)
+
+  useEffect(()=>{
+    const headers = { 'Authorization': `Bearer ${process.env.REACT_APP_TOKEN}`};
+
+    const getRandomList= async()=>{
+     try{
+      const res =await axios.get(`lists${type? "?type="+ type:""}${genre ? "&genre="+genre :""}`,{headers})
+      setLists(res?.data)
+     }catch(err){
+      console.log("getRandomList Home",err);
+     }
+    }
+    getRandomList()
+  },[type,genre])
   return (
     <div className="home">
-      {/* <Login/> */}
-      {/* <Register/> */}
       <Navbar />
-      <Featured/>
-      <List/>
-      <List/>
-      <List/>
-      <List/>
+      <Featured type={type} />
+      {
+        lists.map((list)=>{
+          return(
+            <List list={list}/>
+          )
+        })
+      }
     </div>
   );
 };
