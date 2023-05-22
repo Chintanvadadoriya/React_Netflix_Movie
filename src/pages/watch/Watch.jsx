@@ -1,9 +1,11 @@
 import { ArrowBackOutlined } from "@material-ui/icons";
 import "./watch.scss";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 export default function Watch() {
-  const location =useLocation()
+  const location = useLocation();
+  const data = location.state.movie
+
   return (
     <div className="watch">
       <Link to='/' className="link">
@@ -18,7 +20,7 @@ export default function Watch() {
         autoPlay
         progress
         controls
-        src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+        src={data?.video}
       />
     </div>
   );
