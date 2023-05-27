@@ -39,7 +39,7 @@ export default function ListItem(props) {
         onMouseLeave={() => setIsHovered(false)}
       >
         <img
-          src={movie.img}
+          src={movie?.img}
           alt="no"
         />
         {isHovered && (

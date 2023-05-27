@@ -25,7 +25,7 @@ export default function Featured({ type }) {
     <div className="featured">
       {type && (
         <div className="category">
-          <span>{type === "movies" ? "Movies" : "Series"}</span>
+          <span>{type === "movie" ? "Movies" : "Series"}</span>
           <select name="genre" id="genre">
             <option>Genre</option>
             <option value="adventure">Adventure</option>
@@ -45,14 +45,14 @@ export default function Featured({ type }) {
         </div>
       )}
       <img
-        src={content?.img}
+        src={content?.img || "https://www.shutterstock.com/image-photo/san-francisco-california-usa-11112020-260nw-1852495360.jpg"}
         alt=""
       />
       <div className="info">
-        <img
+        {/* <img
           src={content?.imgtitle}
           alt=""
-        />
+        /> */}
         <span className="desc">
           {content?.desc}
         </span>
