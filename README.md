@@ -6,3 +6,7 @@ run project
 # npm install 
 
 # npm start
+
+# User
+email:vaibhav@gmail.com
+password:123456
