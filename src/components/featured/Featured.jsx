@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Featured({ type,setGenre }) {
+  const token = JSON.parse(localStorage.getItem("user")).accessToken
   const [content,setContent]=useState({})
 
   useEffect(async()=>{
-    const headers = { 'Authorization': `Bearer ${process.env.REACT_APP_TOKEN}` };
+    const headers = { 'Authorization': `Bearer ${token}` };
 
     const getRendomContent =async()=>{
       try{

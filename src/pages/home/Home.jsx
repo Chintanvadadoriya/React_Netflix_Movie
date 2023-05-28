@@ -8,11 +8,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Home = ({type}) => {
+  const token = JSON.parse(localStorage.getItem("user")).accessToken
+
   const [lists,setLists]=useState([])
   const [genre,setGenre]=useState(null)
 
   useEffect(()=>{
-    const headers = { 'Authorization': `Bearer ${process.env.REACT_APP_TOKEN}`};
+  const token = JSON.parse(localStorage.getItem("user")).accessToken
+    const headers = { 'Authorization': `Bearer ${token}`};
 
     const getRandomList= async()=>{
      try{

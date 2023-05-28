@@ -10,13 +10,15 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function ListItem(props) {
+  const token = JSON.parse(localStorage.getItem("user")).accessToken
+
   const { index, item } = props
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setMovie] = useState({});
 
 
   useEffect(() => {
-    const headers = { 'Authorization': `Bearer ${process.env.REACT_APP_TOKEN}` };
+    const headers = { 'Authorization': `Bearer ${token}` };
 
     const getMovie = async () => {
       try {
