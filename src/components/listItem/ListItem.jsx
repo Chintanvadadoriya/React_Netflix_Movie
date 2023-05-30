@@ -22,7 +22,7 @@ export default function ListItem(props) {
 
     const getMovie = async () => {
       try {
-        const res = await axios.get('movies/find/' + item, { headers })
+        const res = await axios.get(`${process.env.REACT_APP_URL}`+'movies/find/' + item, { headers })
         setMovie(res.data)
 
       } catch (err) {

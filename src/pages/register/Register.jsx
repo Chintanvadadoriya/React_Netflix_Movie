@@ -7,14 +7,18 @@ import { useNavigate } from "react-router-dom";
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
 
+
+  console.log("username",username);
+  console.log("password",password);
   const emailRef = useRef();
-  const passwordRef = useRef();
+  // const passwordRef = useRef();
+  // const usernameRef =useRef()
 
   const navigate =useNavigate()
 
     function handleClick(){
-      console.log("object");
     navigate('/login')
   };
 
@@ -23,9 +27,14 @@ export default function Register() {
   };
   const handleFinish = async(e) => {
     e.preventDefault()
-    setPassword(passwordRef.current.value);
+    // setUsername(usernameRef.current.value);
+    // setPassword(passwordRef.current.value);
     try{
-      await axios.post('auth/register',{email,password})
+      console.log("email",email);
+      console.log("username",username);
+      console.log("password",password);
+
+      await axios.post(`${process.env.REACT_APP_URL}auth/register`,{email,username,password})
       navigate('/login')
 
     }catch(err){
@@ -64,7 +73,10 @@ export default function Register() {
           </div>
         ) : (
           <form className="input">
-            <input type="password" placeholder="password" ref={passwordRef} />
+            <input type="text" placeholder="Username" onChange={(e)=>setUsername(e.target.value)} />
+
+            <input type="password" placeholder="password" onChange={(e)=>setPassword(e.target.value)} />
+
             <button className="registerButton" onClick={handleFinish}>
               Start
             </button>

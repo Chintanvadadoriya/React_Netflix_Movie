@@ -12,7 +12,7 @@ export default function Featured({ type,setGenre }) {
 
     const getRendomContent =async()=>{
       try{
-        const res = await axios.get(`movies/random?type?=${type}`,{headers}) 
+        const res = await axios.get(`${process.env.REACT_APP_URL}movies/random?type?=${type}`,{headers}) 
         setContent(res?.data[0])
   
       }catch(err){

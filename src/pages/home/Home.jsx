@@ -19,7 +19,7 @@ const Home = ({type}) => {
 
     const getRandomList= async()=>{
      try{
-      const res =await axios.get(`lists${type? "?type="+ type:""}${genre ? "&genre="+genre :""}`,{headers})
+      const res =await axios.get(`${process.env.REACT_APP_URL}lists${type? "?type="+ type:""}${genre ? "&genre="+genre :""}`,{headers})
       setLists(res?.data)
      }catch(err){
       console.log("getRandomList Home",err);
