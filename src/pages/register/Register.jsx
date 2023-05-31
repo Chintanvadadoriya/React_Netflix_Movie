@@ -8,6 +8,8 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [loader,setLoader]=useState(false)
+
 
 
   console.log("username",username);
@@ -27,6 +29,7 @@ export default function Register() {
   };
   const handleFinish = async(e) => {
     e.preventDefault()
+    setLoader(true)
     // setUsername(usernameRef.current.value);
     // setPassword(passwordRef.current.value);
     try{
@@ -35,6 +38,7 @@ export default function Register() {
       console.log("password",password);
 
       await axios.post(`${process.env.REACT_APP_URL}auth/register`,{email,username,password})
+      setLoader(false)
       navigate('/login')
 
     }catch(err){
@@ -78,7 +82,7 @@ export default function Register() {
             <input type="password" placeholder="password" onChange={(e)=>setPassword(e.target.value)} />
 
             <button className="registerButton" onClick={handleFinish}>
-              Start
+              {loader?"Loading...":"Sign up"}
             </button>
           </form>
         )}
