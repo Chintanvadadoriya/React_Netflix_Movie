@@ -13,9 +13,9 @@ export default function Login() {
   const navigate =useNavigate()
 
   const handleLogin=(e)=>{
+    e.preventDefault()
     if(email,password){
       setLoader(true)
-      e.preventDefault()
       login({email,password},dispatch)
     }else{
       alert("Please enter your credential !")
