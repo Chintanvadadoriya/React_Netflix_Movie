@@ -29,20 +29,22 @@ export default function Register() {
   };
   const handleFinish = async(e) => {
     e.preventDefault()
-    setLoader(true)
-    // setUsername(usernameRef.current.value);
-    // setPassword(passwordRef.current.value);
-    try{
-      console.log("email",email);
-      console.log("username",username);
-      console.log("password",password);
-
-      await axios.post(`${process.env.REACT_APP_URL}auth/register`,{email,username,password})
-      setLoader(false)
-      navigate('/login')
-
-    }catch(err){
-      console.log("err Signup",err);
+    if(email,username,password){
+      setLoader(true)
+      try{
+        console.log("email",email);
+        console.log("username",username);
+        console.log("password",password);
+  
+        await axios.post(`${process.env.REACT_APP_URL}auth/register`,{email,username,password})
+        setLoader(false)
+        navigate('/login')
+  
+      }catch(err){
+        console.log("err Signup",err);
+      }
+    }else{
+      alert("Plase fill require field")
     }
   };
   return (
